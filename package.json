@@ -4,7 +4,7 @@
   "description": "A Polling Service",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/Aimee-MacDonald/QuickQuestion#readme",
   "dependencies": {
+    "bcryptjs": "2.4.3",
+    "body-parser": "1.18.2",
     "dotenv": "5.0.1",
     "express": "4.16.3",
+    "mongoose": "5.0.10",
     "pug": "2.0.1"
   }
 }

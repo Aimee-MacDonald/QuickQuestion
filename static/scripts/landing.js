@@ -11,3 +11,14 @@ window.addEventListener("hashchange", hash => {
       break;
   }
 });
+
+let loginflag = document.getElementById("loginflag").innerText;
+if(loginflag === "true"){
+  document.getElementById("register-button").style.display = "none";
+  document.getElementById("login-button").style.display = "none";
+  document.getElementById("logout-button").style.display = "block";
+} else {
+  document.getElementById("logout-button").style.display = "none";
+  document.getElementById("register-button").style.display = "block";
+  document.getElementById("login-button").style.display = "block";
+}

@@ -3,6 +3,8 @@ const app = express();
 require("dotenv").config();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const passport = require("passport");
+const session = require("express-session");
 
 const User = require(__dirname + "/dbmodels/user");
 
@@ -18,10 +20,27 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use("/auth", auth);
 
 app.get("/", (req, res) => {
-  res.render("landing");
+  res.render("landing", {loginflag: req.isAuthenticated()});
 });
 
 app.listen(process.env.PORT, () => console.log("Listening on Port: " + process.env.PORT));
+
+passport.serializeUser(function(uid, done){
+  done(null, uid);
+});
+
+passport.deserializeUser(function(uid, done){
+  done(null, uid);
+});

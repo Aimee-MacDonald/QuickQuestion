@@ -12,12 +12,11 @@ html(lang="en")
     div(id="header")
       h1 Quick Question
       div(id="auth-buttons")
-        button(id="register-button")
-          a(href="#register") Register
-        button(id="login-button")
-          a(href="#login") Login
-        button(id="logout-button")
-          a(href="auth/logout") Logout
+        a(id="register-button", href="#register") Register
+        a(id="login-button", href="#login") Login
+        a(id="logout-button", href="auth/logout") Logout
+          
+    p(id="loginflag", hidden) #{loginflag}
 
     form(id="register-form", action="/auth/register", method="post")
       input(type="text", placeholder="Email", name="em")

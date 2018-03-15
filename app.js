@@ -10,6 +10,7 @@ const csurf = require("csurf");
 const User = require(__dirname + "/dbmodels/user");
 
 const auth = require(__dirname + "/routes/auth");
+const api = require(__dirname + "/routes/api");
 
 mongoose.connect(process.env.DBURL);
 
@@ -33,6 +34,7 @@ app.use(passport.session());
 app.use(csurf());
 
 app.use("/auth", auth);
+app.use("/api", api);
 
 app.get("/", (req, res) => {
   res.render("landing", {loginflag: req.isAuthenticated(), csrfToken: req.csrfToken()});

@@ -1,57 +1,63 @@
 doctype html
 html(lang="en")
-head
-  meta(charset="UTF-8")
-  meta(name="viewport", content="width=device-width, initial-scale=1.0")
-  meta(http-equiv="X-UA-Compatible", content="ie=edge")
-  link(rel="stylesheet", href="/styles/landing.css")
-  title Quick Question
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(name="csrf-token", content= csrfToken)
+    link(rel="stylesheet", href="/styles/landing.css")
+    title Quick Question
 
-p(id="loginflag", hidden) #{loginflag}
+  body
+    div(id="header")
+      h1 Quick Question
+      div(id="auth-buttons")
+        button(id="register-button")
+          a(href="#register") Register
+        button(id="login-button")
+          a(href="#login") Login
+        button(id="logout-button")
+          a(href="auth/logout") Logout
 
-body
-  div(id="header")
-    h1 Quick Question
-    div(id="auth-buttons")
-      button(id="register-button")
-        a(href="#register") Register
-      button(id="login-button")
-        a(href="#login") Login
-      button(id="logout-button")
-        a(href="auth/logout") Logout
+    form(id="register-form", action="/auth/register", method="post")
+      input(type="text", placeholder="Email", name="em")
+      input(type="password", placeholder="Password", name="pw")
+      input(type="hidden", name="_csrf", value= csrfToken)
+      button(type="submit") Register
 
-  form(id="register-form", action="/auth/register", method="post")
-    input(type="text", placeholder="Email", name="em")
-    input(type="password", placeholder="Password", name="pw")
-    input(type="hidden", name="_csrf", value= csrfToken)
-    button(type="submit") Register
+    form(id="login-form", action="/auth/login", method="post")
+      input(type="text", placeholder="Email", name="em")
+      input(type="password", placeholder="Password", name="pw")
+      input(type="hidden", name="_csrf", value= csrfToken)
+      button(type="submit") Login
 
-  form(id="login-form", action="/auth/login", method="post")
-    input(type="text", placeholder="Email", name="em")
-    input(type="password", placeholder="Password", name="pw")
-    input(type="hidden", name="_csrf", value= csrfToken)
-    button(type="submit") Login
+    div(id="new-poll")
+      input(type="text", placeholder="Question", id="new-poll-question")
+      div(id="new-poll-answers")
+        input(type="text", placeholder="Answer 1")
+        input(type="text", placeholder="Answer 2")
+      button(onclick="newPoll()") Ready
 
-  div(id="poll")
-    div(id="poll-header")
-      p(id="question") What is your Preferred Programming Language?
-      button(id="resultsToggle", onclick="showResults()") View Results
-    ul(id="answers")
-      li(class="answer")
-        button Java
-        div(class="progress-bar")
-        p(class="result") 10/50
-      li(class="answer")
-        button C++
-        div(class="progress-bar")
-        p(class="result") 20/50
-      li(class="answer")
-        button JavaScript
-        div(class="progress-bar")
-        p(class="result") 10/50
-      li(class="answer")
-        button Python
-        div(class="progress-bar")
-        p(class="result") 10/50
+    div(id="poll")
+      div(id="poll-header")
+        p(id="question") What is your Preferred Programming Language?
+        button(id="resultsToggle", onclick="showResults()") View Results
+      ul(id="answers")
+        li(class="answer")
+          button Java
+          div(class="progress-bar")
+          p(class="result") 10/50
+        li(class="answer")
+          button C++
+          div(class="progress-bar")
+          p(class="result") 20/50
+        li(class="answer")
+          button JavaScript
+          div(class="progress-bar")
+          p(class="result") 10/50
+        li(class="answer")
+          button Python
+          div(class="progress-bar")
+          p(class="result") 10/50
 
-  script(src="scripts/landing.js")
+    script(src="scripts/landing.js")

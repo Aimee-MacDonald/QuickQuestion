@@ -22,3 +22,17 @@ if(loginflag === "true"){
   document.getElementById("register-button").style.display = "block";
   document.getElementById("login-button").style.display = "block";
 }
+
+function showResults(){
+  let resultsToggle = document.getElementById("resultsToggle");
+  resultsToggle.onclick = hideResults;
+  resultsToggle.innerText = "Hide Results";
+  document.getElementById("answers").classList.add("answers-revealed");
+}
+
+function hideResults(){
+  let resultsToggle = document.getElementById("resultsToggle");
+  resultsToggle.onclick = showResults;
+  resultsToggle.innerText = "Show Results";
+  document.getElementById("answers").classList.remove("answers-revealed");
+}

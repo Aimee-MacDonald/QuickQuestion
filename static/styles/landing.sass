@@ -6,6 +6,10 @@ body
   height: 100vh
   overflow: hidden
 
+ul
+  list-style-type: none
+  padding: 0
+
 #header
   background-color: blue
   display: flex
@@ -17,3 +21,39 @@ body
 
 #login-form
   display: none
+
+#poll
+  background-color: green
+  max-width: 400px
+
+#poll-header
+  display: flex
+  justify-content: space-between
+
+#answers
+  display: flex
+  flex-flow: wrap row
+
+.answer
+  background-color: orange
+  display: flex
+  button
+    margin: 0.5rem
+    padding: 0.5rem
+
+.progress-bar
+  background-color: pink
+  width: 100%
+  height: 100%
+  display: none
+
+.result
+  display: none
+
+.answers-revealed
+  .answer
+    width: 100%
+    .progress-bar
+      display: block
+    .result
+      display: block

@@ -7,6 +7,8 @@ head
   link(rel="stylesheet", href="/styles/landing.css")
   title Quick Question
 
+p(id="loginflag", hidden) #{loginflag}
+
 body
   div(id="header")
     h1 Quick Question
@@ -18,16 +20,16 @@ body
       button(id="logout-button")
         a(href="auth/logout") Logout
 
-  p(id="loginflag", hidden) #{loginflag}
-
   form(id="register-form", action="/auth/register", method="post")
     input(type="text", placeholder="Email", name="em")
     input(type="password", placeholder="Password", name="pw")
+    input(type="hidden", name="_csrf", value= csrfToken)
     button(type="submit") Register
 
   form(id="login-form", action="/auth/login", method="post")
     input(type="text", placeholder="Email", name="em")
     input(type="password", placeholder="Password", name="pw")
+    input(type="hidden", name="_csrf", value= csrfToken)
     button(type="submit") Login
 
   script(src="scripts/landing.js")

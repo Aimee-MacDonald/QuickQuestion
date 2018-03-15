@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
+const csurf = require("csurf");
 
 const User = require(__dirname + "/dbmodels/user");
 
@@ -29,10 +30,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(csurf());
+
 app.use("/auth", auth);
 
 app.get("/", (req, res) => {
-  res.render("landing", {loginflag: req.isAuthenticated()});
+  res.render("landing", {loginflag: req.isAuthenticated(), csrfToken: req.csrfToken()});
 });
 
 app.listen(process.env.PORT, () => console.log("Listening on Port: " + process.env.PORT));

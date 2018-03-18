@@ -18,45 +18,30 @@ html(lang="en")
           
     p(id="loginflag", hidden) #{loginflag}
 
-    form(id="register-form", action="/auth/register", method="post")
-      input(type="text", placeholder="Email", name="em")
-      input(type="password", placeholder="Password", name="pw")
-      input(type="hidden", name="_csrf", value= csrfToken)
-      button(type="submit") Register
+    div(id="container")
+      form(id="register-form", action="/auth/register", method="post")
+        input(type="text", placeholder="Email", name="em")
+        input(type="password", placeholder="Password", name="pw")
+        input(type="hidden", name="_csrf", value= csrfToken)
+        button(type="submit") Register
 
-    form(id="login-form", action="/auth/login", method="post")
-      input(type="text", placeholder="Email", name="em")
-      input(type="password", placeholder="Password", name="pw")
-      input(type="hidden", name="_csrf", value= csrfToken)
-      button(type="submit") Login
+      form(id="login-form", action="/auth/login", method="post")
+        input(type="text", placeholder="Email", name="em")
+        input(type="password", placeholder="Password", name="pw")
+        input(type="hidden", name="_csrf", value= csrfToken)
+        button(type="submit") Login
 
-    div(id="new-poll")
-      input(type="text", placeholder="Question", id="new-poll-question")
-      div(id="new-poll-answers")
-        input(type="text", placeholder="Answer 1")
-        input(type="text", placeholder="Answer 2")
-      button(onclick="newPoll()") Ready
+      div(id="new-poll")
+        input(type="text", placeholder="Question", id="new-poll-question")
+        div(id="new-poll-answers")
+          input(type="text", placeholder="Answer 1")
+          input(type="text", placeholder="Answer 2")
+        button(onclick="newPoll()") Ready
 
-    div(id="poll")
-      div(id="poll-header")
-        p(id="question") What is your Preferred Programming Language?
+      div(id="poll")
+        div(id="poll-header")
+          p(id="question")
+        ul(id="answers")
         button(id="resultsToggle", onclick="showResults()") View Results
-      ul(id="answers")
-        li(class="answer")
-          button Java
-          div(class="progress-bar")
-          p(class="result") 10/50
-        li(class="answer")
-          button C++
-          div(class="progress-bar")
-          p(class="result") 20/50
-        li(class="answer")
-          button JavaScript
-          div(class="progress-bar")
-          p(class="result") 10/50
-        li(class="answer")
-          button Python
-          div(class="progress-bar")
-          p(class="result") 10/50
 
     script(src="scripts/landing.js")

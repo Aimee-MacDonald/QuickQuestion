@@ -1,20 +1,31 @@
 body
-  background-color: pink
   margin: 0
   padding: 0
   width: 100vw
   height: 100vh
   overflow: hidden
+  display: flex
+  flex-flow: nowrap column
 
 ul
   list-style-type: none
   padding: 0
 
 #header
-  background-color: blue
   display: flex
+  background-color: pink
   flex-flow: nowrap row
   justify-content: space-between
+  align-items: center
+  height: 5%
+
+#container
+  background-color: lightblue
+  width: 100%
+  height: 95%
+  display: flex
+  justify-content: center
+  align-items: center
 
 #register-form
   display: none
@@ -22,9 +33,15 @@ ul
 #login-form
   display: none
 
+#new-poll
+  display: none
+
 #poll
   background-color: green
-  max-width: 400px
+  display: flex
+  flex-flow: nowrap column
+  padding: 1rem
+  align-items: center
 
 #poll-header
   display: flex

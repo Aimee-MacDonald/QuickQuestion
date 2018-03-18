@@ -23,6 +23,38 @@ if(loginflag === "true"){
   document.getElementById("login-button").style.display = "block";
 }
 
+let polldata = {
+  question: "What is your Preferred Programming Language?",
+  answers: [
+    {answer: "Java", result: 10},
+    {answer: "C++", result: 20},
+    {answer: "JavaScript", result: 10},
+    {answer: "Python", result: 10}
+  ],
+  total: 50
+}
+
+document.getElementById("question").innerText = polldata.question;
+polldata.answers.forEach(i => {
+  let newAnswer = document.createElement("li");
+  let newButton = document.createElement("button");
+  let newBar = document.createElement("div");
+  let newResult = document.createElement("p");
+
+  newAnswer.classList.add("answer");
+  newBar.classList.add("progress-bar");
+  newResult.classList.add("result");
+
+  newButton.innerText = i.answer;
+  newResult.innerText = i.result + "/" + polldata.total;
+
+  newAnswer.append(newButton);
+  newAnswer.append(newBar);
+  newAnswer.append(newResult);
+
+  document.getElementById("answers").append(newAnswer);
+});
+
 function showResults(){
   let resultsToggle = document.getElementById("resultsToggle");
   resultsToggle.onclick = hideResults;

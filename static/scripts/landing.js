@@ -69,6 +69,14 @@ function hideResults(){
   document.getElementById("answers").classList.remove("answers-revealed");
 }
 
+function addAnswer(){
+  let ans = document.createElement("input");
+  ans.type = "text";
+  ans.placeholder = "Poll Answer";
+
+  document.getElementById("new-poll-answers").append(ans);
+}
+
 function newPoll(){
   let poll = {
     question: document.getElementById("new-poll-question").value,

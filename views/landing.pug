@@ -34,9 +34,9 @@ html(lang="en")
       div(id="new-poll")
         input(type="text", placeholder="Question", id="new-poll-question")
         div(id="new-poll-answers")
-          input(type="text", placeholder="Answer 1")
-          input(type="text", placeholder="Answer 2")
-        button(onclick="newPoll()") Ready
+          input(type="text", placeholder="Poll Answer")
+        button(onclick="addAnswer()") Add Answer
+        button(onclick="newPoll()") Submit
 
       div(id="poll")
         div(id="poll-header")

@@ -75,3 +75,34 @@ function newPoll(){
   request.setRequestHeader('Content-Type', "Application/json");
   request.send(JSON.stringify(poll));
 }
+
+let navActive = false;
+function toggleNav(){
+  navActive = !navActive;
+  if(navActive){
+    document.getElementById("nav").style.display = "block";
+  } else {
+    document.getElementById("nav").style.display = "none";
+  }
+}
+
+window.onhashchange = () => {
+  switch (location.hash) {
+    case "#profile":
+      document.getElementById("new-poll").style.display = "none";
+      document.getElementById("poll").style.display = "none";
+      break;
+
+    case "#polls":
+      document.getElementById("new-poll").style.display = "flex";
+      document.getElementById("poll").style.display = "none";
+      break;
+
+    default:
+      document.getElementById("new-poll").style.display = "none";
+      document.getElementById("poll").style.display = "flex";
+      break;
+  }
+
+  toggleNav();
+}

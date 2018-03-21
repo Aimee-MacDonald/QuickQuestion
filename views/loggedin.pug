@@ -10,10 +10,19 @@ html(lang="en")
 
   body
     div(id="header")
-      h1 Quick Question:
-      a(id="logout", href="/auth/logout") Logout
+      button(onclick="toggleNav()") Menu
+      a(href="/") Username
 
     div(id="container")
+      nav(id="nav")
+        ul
+          li 
+            a(href="#profile") My Profile
+          li
+            a(href="#polls") My Polls
+          li
+            a(href="/auth/logout") Logout
+            
       div(id="new-poll")
         input(type="text", placeholder="Question", id="new-poll-question")
         div(id="new-poll-answers")

@@ -14,6 +14,7 @@ html(lang="en")
       a(href="/") Username
 
     div(id="container")
+      p(id="landing-poll", hidden) #{poll}
       nav(id="nav")
         ul
           li 
@@ -22,6 +23,15 @@ html(lang="en")
             a(href="#polls") My Polls
           li
             a(href="/auth/logout") Logout
+            
+      div(id="profile")
+        img
+        h1 Name
+        h2 Score:
+        h2 Member Since:
+        h2 Number of Polls
+        h2 Number of Votes Recieved
+        h2 Number of Votes Given
             
       div(id="new-poll")
         input(type="text", placeholder="Question", id="new-poll-question")

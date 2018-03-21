@@ -14,6 +14,7 @@ html(lang="en")
       button(id="loginout", onclick="loginout()") Login
 
     div(id="container")
+      p(id="landing-poll", hidden) #{poll}
       div(id="login-register")
         form(id="register-form", action="/auth/register", method="post")
           input(type="text", placeholder="Email", name="em")

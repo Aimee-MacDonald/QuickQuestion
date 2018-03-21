@@ -8,6 +8,7 @@ const session = require("express-session");
 const csurf = require("csurf");
 
 const User = require(__dirname + "/dbmodels/user");
+const Poll = require(__dirname + "/dbmodels/poll")
 
 const auth = require(__dirname + "/routes/auth");
 const api = require(__dirname + "/routes/api");
@@ -37,10 +38,35 @@ app.use("/auth", auth);
 app.use("/api", api);
 
 app.get("/", (req, res) => {
-  if(req.isAuthenticated()){
-    res.render("loggedin");
+  if(req.query.pollid){
+    Poll.find({pollid: req.query.pollid}, (err, docs) => {
+      if(err) throw err;
+
+      if(docs.length > 0){
+        p = JSON.stringify({
+          "question": docs[0].question,
+          "answers": docs[0].answers
+        });
+
+        if(req.isAuthenticated()){
+          res.render("loggedin", {csrfToken: req.csrfToken(), poll: p});
+        } else {
+          res.render("landing", {csrfToken: req.csrfToken(), poll: p});
+        }
+      } else {
+        if(req.isAuthenticated()){
+          res.render("loggedin", {csrfToken: req.csrfToken()});
+        } else {
+          res.render("landing", {csrfToken: req.csrfToken()});
+        }
+      }
+    });
   } else {
-    res.render("landing", {csrfToken: req.csrfToken()});
+    if(req.isAuthenticated()){
+      res.render("loggedin", {csrfToken: req.csrfToken()});
+    } else {
+      res.render("landing", {csrfToken: req.csrfToken()});
+    }
   }
 });
 

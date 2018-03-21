@@ -37,7 +37,11 @@ app.use("/auth", auth);
 app.use("/api", api);
 
 app.get("/", (req, res) => {
-  res.render("landing", {loginflag: req.isAuthenticated(), csrfToken: req.csrfToken()});
+  if(req.isAuthenticated()){
+    res.render("loggedin");
+  } else {
+    res.render("landing", {csrfToken: req.csrfToken()});
+  }
 });
 
 app.listen(process.env.PORT, () => console.log("Listening on Port: " + process.env.PORT));

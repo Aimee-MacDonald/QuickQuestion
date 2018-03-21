@@ -10,33 +10,22 @@ html(lang="en")
 
   body
     div(id="header")
-      h1 Quick Question
-      div(id="auth-buttons")
-        a(id="register-button", href="#register") Register
-        a(id="login-button", href="#login") Login
-        a(id="logout-button", href="auth/logout") Logout
-          
-    p(id="loginflag", hidden) #{loginflag}
+      h1 Quick Question:
+      button(id="loginout", onclick="loginout()") Login
 
     div(id="container")
-      form(id="register-form", action="/auth/register", method="post")
-        input(type="text", placeholder="Email", name="em")
-        input(type="password", placeholder="Password", name="pw")
-        input(type="hidden", name="_csrf", value= csrfToken)
-        button(type="submit") Register
-
-      form(id="login-form", action="/auth/login", method="post")
-        input(type="text", placeholder="Email", name="em")
-        input(type="password", placeholder="Password", name="pw")
-        input(type="hidden", name="_csrf", value= csrfToken)
-        button(type="submit") Login
-
-      div(id="new-poll")
-        input(type="text", placeholder="Question", id="new-poll-question")
-        div(id="new-poll-answers")
-          input(type="text", placeholder="Poll Answer")
-        button(onclick="addAnswer()") Add Answer
-        button(onclick="newPoll()") Submit
+      div(id="login-register")
+        form(id="register-form", action="/auth/register", method="post")
+          input(type="text", placeholder="Email", name="em")
+          input(type="password", placeholder="Password", name="pw")
+          input(type="hidden", name="_csrf", value= csrfToken)
+          button(type="submit") Register
+  
+        form(id="login-form", action="/auth/login", method="post")
+          input(type="text", placeholder="Email", name="em")
+          input(type="password", placeholder="Password", name="pw")
+          input(type="hidden", name="_csrf", value= csrfToken)
+          button(type="submit") Login
 
       div(id="poll")
         div(id="poll-header")

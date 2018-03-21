@@ -46,13 +46,32 @@ function hideResults(){
   document.getElementById("answers").classList.remove("answers-revealed");
 }
 
-let modalOpen = false;
-function loginout(){
-  if(modalOpen){
-    document.getElementById("login-register").style.display = "none";
-  } else {
-    document.getElementById("login-register").style.display = "flex";
+function addAnswer(){
+  let ans = document.createElement("input");
+  ans.type = "text";
+  ans.placeholder = "Poll Answer";
+
+  document.getElementById("new-poll-answers").append(ans);
+}
+
+function newPoll(){
+  let poll = {
+    question: document.getElementById("new-poll-question").value,
+    answers: []
   }
 
-  modalOpen = !modalOpen;
+  document.getElementById("new-poll-answers").childNodes.forEach(i => {
+    poll.answers.push(i.value);
+  });
+
+  let csrftoken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+  let request = new XMLHttpRequest();
+  request.onload = () => {console.log("Success")};
+  request.onerror = () => {console.log("Error")};
+  request.open("post", "/api/new", true);
+  request.withCredentials = true;
+  request.setRequestHeader('CSRF-Token', csrftoken);
+  request.setRequestHeader('Content-Type', "Application/json");
+  request.send(JSON.stringify(poll));
 }

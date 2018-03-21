@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(name="csrf-token", content= csrfToken)
+    link(rel="stylesheet", href="/styles/loggedin.css")
+    title Quick Question
+
+  body
+    div(id="header")
+      h1 Quick Question:
+      a(id="logout", href="/auth/logout") Logout
+
+    div(id="container")
+      div(id="new-poll")
+        input(type="text", placeholder="Question", id="new-poll-question")
+        div(id="new-poll-answers")
+          input(type="text", placeholder="Poll Answer")
+        button(onclick="addAnswer()") Add Answer
+        button(onclick="newPoll()") Submit
+
+      div(id="poll")
+        div(id="poll-header")
+          p(id="question")
+        ul(id="answers")
+        button(id="resultsToggle", onclick="showResults()") View Results
+
+    script(src="scripts/loggedin.js")

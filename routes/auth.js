@@ -20,7 +20,14 @@ router.post("/register", function(req, res, next){
       user.save(err => {
         if(err) throw err;
 
-        res.redirect("/");
+        User.find({email: req.body.em}, (err, docs) => {
+          if(err) throw err;
+
+          if(docs.length > 0)
+            req.login(docs[0].password, (err, resp) => {if(err) throw err});
+
+          res.redirect("/");
+        });
       });
     }
   });

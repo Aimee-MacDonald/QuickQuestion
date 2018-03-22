@@ -8,9 +8,17 @@ router.post("/new", (req, res, next) => {
     if(err) throw err;
 
     let poll = new Poll({
-      pollid: count,
-      question: req.body.question,
-      answers: req.body.answers
+      'pollid': count,
+      'question': req.body.question,
+      'answers': [],
+      'total': 0
+    });
+
+    req.body.answers.forEach(i => {
+      poll.answers.push({
+        'answer': i,
+        'score': 0
+      });
     });
 
     poll.save(err => {
@@ -32,6 +40,15 @@ router.get("/getRandom", (req, res, next) => {
 
       res.send(result);
     });
+  });
+});
+
+router.post("/vote", (req, res, next) => {
+  Poll.findOne({pollid: req.body.pollid}, (err, doc) => {
+    if(err) throw err;
+    doc.total++;
+    doc.answers[0].score++;
+    doc.save();
   });
 });
 

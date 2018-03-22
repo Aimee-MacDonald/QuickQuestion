@@ -19,6 +19,8 @@ if(landingPoll){
 
 function updatePoll(polldata){
   document.getElementById("question").innerText = polldata.question;
+  document.getElementById("pollid").innerText = polldata.pollid;
+
   polldata.answers.forEach(i => {
     let newAnswer = document.createElement("li");
     let newButton = document.createElement("button");
@@ -29,14 +31,18 @@ function updatePoll(polldata){
     newBar.classList.add("progress-bar");
     newResult.classList.add("result");
 
-    newButton.innerText = i;
-    newResult.innerText = i.result + "/" + polldata.total;
+    newButton.innerText = i.answer;
+    newResult.innerText = i.score + "/" + polldata.total;
 
     newAnswer.append(newButton);
     newAnswer.append(newBar);
     newAnswer.append(newResult);
 
     document.getElementById("answers").append(newAnswer);
+  });
+
+  document.getElementById("answers").addEventListener("click", (e) => {
+    vote(e.target.innerText);
   });
 }
 
@@ -119,6 +125,22 @@ function checkHash(){
       document.getElementById("profile").style.display = "none";
       break;
   }
+}
+
+function vote(option){
+  let pac = JSON.stringify({
+    'pollid': document.getElementById("pollid").innerText,
+    'choice': option
+  });
+
+  let request = new XMLHttpRequest();
+  request.onerror = () => {console.log("Error Response")};
+  request.open("post", "/api/vote", true);
+  request.withCredentials = true;
+  request.setRequestHeader('CSRF-Token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+  request.setRequestHeader('Content-Type', "Application/json");
+  request.onload = () => {console.log("Success")};
+  request.send(pac);
 }
 
 checkHash();

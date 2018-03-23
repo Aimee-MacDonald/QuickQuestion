@@ -47,17 +47,8 @@ function updatePoll(polldata){
 }
 
 function showResults(){
-  let resultsToggle = document.getElementById("resultsToggle");
-  resultsToggle.onclick = hideResults;
-  resultsToggle.innerText = "Hide Results";
+  document.getElementById("show-results").style.display = "none";
   document.getElementById("answers").classList.add("answers-revealed");
-}
-
-function hideResults(){
-  let resultsToggle = document.getElementById("resultsToggle");
-  resultsToggle.onclick = showResults;
-  resultsToggle.innerText = "Show Results";
-  document.getElementById("answers").classList.remove("answers-revealed");
 }
 
 let modalOpen = false;
@@ -85,4 +76,6 @@ function vote(option){
   request.setRequestHeader('Content-Type', "Application/json");
   request.onload = () => {console.log("Success")};
   request.send(pac);
+
+  showResults();
 }

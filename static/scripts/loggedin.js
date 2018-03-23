@@ -2,6 +2,7 @@ let landingPoll = document.getElementById("landing-poll").innerText;
 nextPoll();
 
 function nextPoll(){
+  document.getElementById("answers").classList = "";
   if(landingPoll){
     updatePoll(JSON.parse(landingPoll));
   } else {
@@ -143,6 +144,12 @@ function vote(option){
   request.send(pac);
 
   showResults();
+}
+
+function share(){
+  let link = document.createElement("p");
+  link.innerText = "https://quickquestion.glitch.me" + "?pollid=" + pollid.innerText;
+  document.getElementById("share").append(link);
 }
 
 checkHash();

@@ -47,7 +47,13 @@ router.post("/vote", (req, res, next) => {
   Poll.findOne({pollid: req.body.pollid}, (err, doc) => {
     if(err) throw err;
     doc.total++;
-    doc.answers[0].score++;
+
+    doc.answers.forEach((a, i) => {
+      if(a.answer === req.body.choice){
+        doc.answers[i].score++;
+      }
+    });
+
     doc.save();
   });
 });

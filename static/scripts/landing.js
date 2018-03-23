@@ -25,15 +25,20 @@ function updatePoll(polldata){
     let newAnswer = document.createElement("li");
     let newButton = document.createElement("button");
     let newBar = document.createElement("div");
+    let resbar = document.createElement("div");
     let newResult = document.createElement("p");
 
     newAnswer.classList.add("answer");
     newBar.classList.add("progress-bar");
+    resbar.classList.add("progress");
     newResult.classList.add("result");
 
     newButton.innerText = i.answer;
     newResult.innerText = i.score + "/" + polldata.total;
 
+    resbar.style.width = parseInt((i.score / polldata.total) * 100) + "%";
+
+    newBar.append(resbar);
     newAnswer.append(newButton);
     newAnswer.append(newBar);
     newAnswer.append(newResult);

@@ -1,24 +1,27 @@
 let landingPoll = document.getElementById("landing-poll").innerText;
-nextPoll();
+document.getElementById("landing-poll").innerText = "";
+if(landingPoll){
+  updatePoll(JSON.parse(landingPoll));
+} else {
+  nextPoll();
+}
 
 function nextPoll(){
   document.getElementById("answers").classList = "";
-  if(landingPoll){
-    updatePoll(JSON.parse(landingPoll));
-  } else {
-    let request = new XMLHttpRequest();
-    request.onerror = () => {console.log("Error Response")};
-    request.open("get", "/api/getRandom", true);
-    request.withCredentials = true;
-    request.setRequestHeader('CSRF-Token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-    request.setRequestHeader('Content-Type', "Application/json");
-    request.onload = () => {
-      if(request.readyState === 4 && request.status === 200){
-        updatePoll(JSON.parse(request.responseText));
-      };
+  document.getElementById("show-results").style.display = "block";
+
+  let request = new XMLHttpRequest();
+  request.onerror = () => {console.log("Error Response")};
+  request.open("get", "/api/getRandom", true);
+  request.withCredentials = true;
+  request.setRequestHeader('CSRF-Token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+  request.setRequestHeader('Content-Type', "Application/json");
+  request.onload = () => {
+    if(request.readyState === 4 && request.status === 200){
+      updatePoll(JSON.parse(request.responseText));
     };
-    request.send();
-  }
+  };
+  request.send();
 }
 
 function updatePoll(polldata){

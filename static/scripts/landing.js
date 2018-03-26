@@ -57,6 +57,8 @@ function updatePoll(polldata){
   document.getElementById("answers").addEventListener("click", (e) => {
     vote(e.target.innerText);
   });
+
+  loadComments();
 }
 
 function showResults(){
@@ -98,3 +100,35 @@ function share(){
   link.innerText = "https://quickquestion.glitch.me" + "?pollid=" + pollid.innerText;
   document.getElementById("share").append(link);
 }
+
+function loadComments(){
+  let pollid = document.getElementById("pollid").innerText;
+
+  let request = new XMLHttpRequest();
+  request.onerror = () => {console.log("Error Response")};
+  request.open("get", "/api/getComments?pollid=" + pollid, true);
+  request.withCredentials = true;
+  request.setRequestHeader('CSRF-Token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+  request.setRequestHeader('Content-Type', "Application/json");
+  request.onload = () => {
+    if(request.readyState === 4 && request.status === 200){
+      console.log(request.responseText);
+    };
+  };
+
+  request.send();
+}
+
+let commentsData = [
+  {user: "Aimée",  comment: "This is a comment"},
+  {user: "Stew", comment: "This is Another Comment"}
+];
+
+commentsData.forEach(c => {
+  let newComment = document.createElement("div");
+  newComment.classList.add("comment");
+  let newCommentP = document.createElement("p");
+  newCommentP.innerText = c.user + ": " + c.comment;
+  newComment.append(newCommentP);
+  document.getElementById("comments").append(newComment);
+});

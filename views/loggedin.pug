@@ -49,5 +49,12 @@ html(lang="en")
         button(onclick="nextPoll()") Next
         div(id="share")
           button(onclick="share()") Share
+          
+      form(action="api/comment", method="post")
+        input(type="text", placeholder="Your Comment", name="comment")
+        input(type="hidden", name="_csrf", value= csrfToken)
+        button(type="submit") Submit
+          
+      div(id="comments")
 
     script(src="scripts/loggedin.js")

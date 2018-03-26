@@ -58,4 +58,12 @@ router.post("/vote", (req, res, next) => {
   });
 });
 
+router.post("/comment", (req, res, next) => {
+  console.log(req.body);
+});
+
+router.get("/getComments", (req, res, next) => {
+  console.log(req.query);
+});
+
 module.exports = router;

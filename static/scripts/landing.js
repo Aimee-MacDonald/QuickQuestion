@@ -1,5 +1,6 @@
 let landingPoll = document.getElementById("landing-poll").innerText;
 document.getElementById("landing-poll").innerText = "";
+
 if(landingPoll){
   updatePoll(JSON.parse(landingPoll));
 } else {
@@ -28,6 +29,7 @@ function updatePoll(polldata){
   document.getElementById("question").innerText = polldata.question;
   document.getElementById("pollid").innerText = polldata.pollid;
   document.getElementById("answers").innerText = "";
+  document.getElementById("hpid").value = polldata.pollid;
 
   polldata.answers.forEach(i => {
     let newAnswer = document.createElement("li");
@@ -112,23 +114,16 @@ function loadComments(){
   request.setRequestHeader('Content-Type', "Application/json");
   request.onload = () => {
     if(request.readyState === 4 && request.status === 200){
-      console.log(request.responseText);
+      JSON.parse(request.responseText).comments.forEach(c => {
+        let newComment = document.createElement("div");
+        newComment.classList.add("comment");
+        let newCommentP = document.createElement("p");
+        newCommentP.innerText = c.username + ": " + c.comment;
+        newComment.append(newCommentP);
+        document.getElementById("comments").append(newComment);
+      });
     };
   };
 
   request.send();
 }
-
-let commentsData = [
-  {user: "Aimée",  comment: "This is a comment"},
-  {user: "Stew", comment: "This is Another Comment"}
-];
-
-commentsData.forEach(c => {
-  let newComment = document.createElement("div");
-  newComment.classList.add("comment");
-  let newCommentP = document.createElement("p");
-  newCommentP.innerText = c.user + ": " + c.comment;
-  newComment.append(newCommentP);
-  document.getElementById("comments").append(newComment);
-});

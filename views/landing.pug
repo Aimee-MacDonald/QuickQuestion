@@ -40,6 +40,8 @@ html(lang="en")
           
       form(action="api/comment", method="post")
         input(type="text", placeholder="Your Comment", name="comment")
+        input(type="hidden", name="pollid", id="hpid")
+        input(type="hidden", name="un", value="Aimee")
         input(type="hidden", name="_csrf", value= csrfToken)
         button(type="submit") Submit
           

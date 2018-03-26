@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Poll = require("../dbmodels/poll");
+const Comment = require("../dbmodels/comment")
 
 router.post("/new", (req, res, next) => {
   Poll.count().exec((err, count) => {
@@ -59,11 +60,36 @@ router.post("/vote", (req, res, next) => {
 });
 
 router.post("/comment", (req, res, next) => {
-  console.log(req.body);
+  Comment.findOne({pollid: req.body.pollid}, (err, doc) => {
+    if(err) throw err;
+
+    if(doc){
+      let comment = {
+        'username': req.body.un,
+        'comment': req.body.comment
+      }
+      doc.comments.push(comment);
+      doc.save();
+      res.sendStatus(200);
+    } else {
+      let comment = new Comment({
+        'pollid': req.body.pollid,
+        'comments': [{
+          'username': req.body.un,
+          'comment': req.body.comment
+        }]
+      });
+      comment.save();
+      res.sendStatus(200);
+    }
+  });
 });
 
 router.get("/getComments", (req, res, next) => {
-  console.log(req.query);
+  Comment.findOne({pollid: req.query.pollid}, (err, doc) => {
+    if(err) throw err;
+    res.send(doc);
+  });
 });
 
 module.exports = router;

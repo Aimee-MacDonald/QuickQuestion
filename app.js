@@ -44,6 +44,7 @@ app.get("/", (req, res) => {
 
       if(docs.length > 0){
         p = JSON.stringify({
+          "pollid": req.query.pollid,
           "question": docs[0].question,
           "answers": docs[0].answers
         });

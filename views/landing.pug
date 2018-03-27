@@ -10,23 +10,30 @@ html(lang="en")
 
   body
     div(id="header")
-      h1 Quick Question:
+      span Quick Question:
       button(id="loginout", onclick="loginout()") Login
 
     div(id="container")
       p(id="landing-poll", hidden) #{poll}
       div(id="login-register")
         form(id="register-form", action="/auth/register", method="post")
+          h1 Register
           input(type="text", placeholder="Email", name="em")
           input(type="password", placeholder="Password", name="pw")
+          input(type="password", placeholder="Verify Password", name="vpw")
           input(type="hidden", name="_csrf", value= csrfToken)
           button(type="submit") Register
+          p - or -
+          button(type="button", onclick="formToggle()") Login
   
         form(id="login-form", action="/auth/login", method="post")
-          input(type="text", placeholder="Email", name="em")
+          h1 Login
+          input(type="email", placeholder="Email", name="em")
           input(type="password", placeholder="Password", name="pw")
           input(type="hidden", name="_csrf", value= csrfToken)
           button(type="submit") Login
+          p - or -
+          button(type="button", onclick="formToggle()") Register
 
       div(id="poll")
         div(id="poll-header")

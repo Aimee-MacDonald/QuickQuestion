@@ -127,3 +127,16 @@ function loadComments(){
 
   request.send();
 }
+
+let reg = false;
+function formToggle(){
+  reg = !reg;
+
+  if(reg){
+    document.getElementById("login-form").style.display = "none";
+    document.getElementById("register-form").style.display = "flex";
+  } else {
+    document.getElementById("register-form").style.display = "none";
+    document.getElementById("login-form").style.display = "flex";
+  }
+}

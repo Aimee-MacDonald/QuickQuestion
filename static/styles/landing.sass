@@ -3,178 +3,42 @@ body
   height: 100vh
   width: 100vw
 
-ul
-  list-style-type: none
-  padding: 0
-
-#header
-  display: flex
-  background-color: #333
-  color: orange
-  justify-content: space-between
-  align-items: center
-  height: 10%
-  padding: 0rem 1rem
-  font-size: 2rem
-
-button
-  background-color: orange
-  border: 2px solid orange
-  box-shadow: 0px 3px 5px 1px #666
-  border-radius: 5px
-  font-weight: bold
-  padding: 0.5rem
-
-#login-register
-  display: none
-  justify-content: center
-  align-items: center
-  background-color: transparentize(black, 0.4)
-  position: fixed
-  width: 100%
-  height: 100%
-
-#register-form
-  display: none
-  flex-flow: nowrap column
-  align-items: center
-  border-radius: 5px
-  background-color: white
-  padding-bottom: 1rem
-  box-shadow: 0px 6px 10px 2px #333
-  h1
-    margin: 0
-    width: 100%
-    background-color: #333
-    color: orange
-    text-align: center
-    margin-bottom: 1rem
-    padding: 0.5rem 0
-    border-top-left-radius: 5px
-    border-top-right-radius: 5px
-  input
-    padding: 0.5rem
-    border: 2px inset orange
-    margin: 0rem 1rem 1rem 1rem
-  button
-    padding: 0.5rem
-    border: 2px inset orange
-    width: 90%
-  p
-    font-weight: bold
-
-
-#login-form
-  display: flex
-  flex-flow: nowrap column
-  align-items: center
-  border-radius: 5px
-  background-color: white
-  padding-bottom: 1rem
-  box-shadow: 0px 6px 10px 2px #333
-  h1
-    margin: 0
-    width: 100%
-    background-color: #333
-    color: orange
-    text-align: center
-    margin-bottom: 1rem
-    padding: 0.5rem 0
-    border-top-left-radius: 5px
-    border-top-right-radius: 5px
-  input
-    padding: 0.5rem
-    border: 2px inset orange
-    margin: 0rem 1rem 1rem 1rem
-  button
-    padding: 0.5rem
-    border: 2px inset orange
-    width: 90%
-  p
-    font-weight: bold
-
-#container
-  height: 90%
+.hbox
   display: flex
   flex-flow: nowrap row
-
-#poll
-  display: flex
-  background-color: #99FF99
-  height: 100%
-  flex-flow: wrap row
+  justify-content: center
   align-items: center
-  justify-content: space-around
 
-#poll-header
-  display: flex
-  width: 100%
-  justify-content: space-between
-  align-items: center
-  font-size: 2rem
-  padding: 0rem 1rem
-
-#answers
-  background-color: orange
-  width: 100%
-  display: flex
-  flex-flow: wrap row
-  justify-content: space-around
-  padding: 2rem 0rem
-
-.answer
-  display: flex
-  align-items: center
-  width: 50%
-  button
-    background-color: white
-    width: 100%
-    border-color: white
-    margin: 0.5rem
-    padding: 0.5rem
-
-.progress-bar
-  background-color: #99FF99
-  width: 100%
-  height: 50%
-  display: none
-  border: 2px outset #666
-  margin-right: 1rem
-  border-radius: 10px
-  .progress
-    border-top-left-radius: 10px
-    border-bottom-left-radius: 10px
-    background-color: orange
-    width: 0%
-    height: 100%
-
-.result
-  display: none
-  margin-right: 1rem
-
-.answers-revealed
-  .answer
-    width: 100%
-    button
-      background-color: orange
-      max-width: 30%
-      border: none
-      box-shadow: none
-    .progress-bar
-      display: block
-    .result
-      display: block
-
-#post-comment
-  display: none
-
-#comments
-  display: none
-  overflow-y: scroll
-
-#menuspace
-  background-color: purple
+.vbox
   display: flex
   flex-flow: nowrap column
+  justify-content: center
+  align-items: center
+
+#mainframe
+  width: 100%
+  height: 100%
+
+#contentspace
+  width: 70%
+  height: 100%
+
+#menuspace
   width: 30%
   height: 100%
+  background-color: #660989
+  box-shadow: -5px 0px 15px 5px #660989
+
+.spinner
+  background: lime
+  border: 25px solid black
+  border-left-color: transparent
+  border-right-color: transparent
+  border-radius: 50%
+  animation: spin 1s cubic-bezier(1, -1.6, 0.58, 1.19) infinite
+
+@keyframes spin
+  0%
+    transform: rotateZ(0deg)
+  100%
+    transform: rotateZ(360deg)

@@ -7,61 +7,12 @@ html(lang="en")
     meta(name="csrf-token", content= csrfToken)
     link(rel="stylesheet", href="/styles/landing.css")
     title Quick Question
-
-  body
-    div(id="header")
-      span Quick Question:
-      button(id="loginout", onclick="loginout()") Login
-
-    div(id="container")
-      p(id="landing-poll", hidden) #{poll}
-      div(id="login-register")
-        form(id="register-form", action="/auth/register", method="post")
-          h1 Register
-          input(type="text", placeholder="Email", name="em")
-          input(type="password", placeholder="Password", name="pw")
-          input(type="password", placeholder="Verify Password", name="vpw")
-          input(type="hidden", name="_csrf", value= csrfToken)
-          button(type="submit") Register
-          p - or -
-          button(type="button", onclick="formToggle()") Login
-  
-        form(id="login-form", action="/auth/login", method="post")
-          h1 Login
-          input(type="email", placeholder="Email", name="em")
-          input(type="password", placeholder="Password", name="pw")
-          input(type="hidden", name="_csrf", value= csrfToken)
-          button(type="submit") Login
-          p - or -
-          button(type="button", onclick="formToggle()") Register
-
-      div(id="poll")
-        div(id="poll-header")
-          p(id="question")
-          p(id="pollid", hidden)
-          button(id="show-results", onclick="showResults()")
-            i(class="fas fa-eye")
-        ul(id="answers")
-        button(onclick="nextPoll()")
-          i(class="fas fa-arrow-right")
-        button(onclick="toggleComments")
-          i(class="fas fa-comments")
-        button(onclick="like")
-          i(class="fas fa-heart")
-        div(id="share")
-          button(onclick="share()")
-            i(class="fas fa-share-alt")
-          
-      form(action="api/comment", method="post", id="post-comment")
-        input(type="text", placeholder="Your Comment", name="comment")
-        input(type="hidden", name="pollid", id="hpid")
-        input(type="hidden", name="un", value="Aimee")
-        input(type="hidden", name="_csrf", value= csrfToken)
-        button(type="submit") Submit
-          
-      div(id="comments")
-        
-      div(id="menuspace")
-        
-    script(src="scripts/landing.js")
-    script(src="scripts/fontawesome-all.js")
+    body
+      div(class="hbox", id="mainframe")
+        div(class="vbox", id="contentspace")
+          div(class="spinner")
+        div(class="vbox", id="menuspace")
+          div(class="spinner")
+      
+      script(src="scripts/landing.js")
+      script(src="scripts/fontawesome-all.js")

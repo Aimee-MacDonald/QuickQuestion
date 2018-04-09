@@ -1,3 +1,4 @@
+/*
 let landingPoll = document.getElementById("landing-poll").innerText;
 document.getElementById("landing-poll").innerText = "";
 
@@ -140,7 +141,7 @@ function formToggle(){
     document.getElementById("login-form").style.display = "flex";
   }
 }
-
+*/
 let sc = document.createElement("script");
 sc.src = ("scripts/loginmenu.js");
 document.getElementById("menuspace").append(sc);

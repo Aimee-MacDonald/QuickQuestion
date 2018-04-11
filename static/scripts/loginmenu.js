@@ -7,7 +7,7 @@ menu.id = "menu";
 menu.innerHTML = `
 <p>Sign up now to start creating and sharing your own polls.</p>
 
-<div class="vbox">
+<div class="vbox", id="namefield">
   <label>Name</label>
   <input></input>
 </div>
@@ -22,14 +22,16 @@ menu.innerHTML = `
   <input></input>
 </div>
 
-<div class="vbox">
+<div class="vbox", id="confirmpwdfield">
   <label>Confirm Password</label>
   <input></input>
 </div>
 
-<a href="#">Log in</a>
-<p>- or -</p>
-<a href="#">Register</a>
+<div class="vbox">
+  <button onclick="submit()", id="loginbtn">Log in</button>
+  <p>- or -</p>
+  <button onclick="toggleLoginRegister()", id="registerbtn">Register</button>
+</div>
 
 <div id="socialLogins" class="hbox">
   <a href="#" class="socialButton"><i class="fab fa-twitter"></i></a>
@@ -46,6 +48,10 @@ style.innerText = `
 #menu{
   color: #c751f4;
   text-align: center;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  font-size: 1.5rem;
 }
 
 #menu a{
@@ -80,12 +86,18 @@ style.innerText = `
   font-size: 1.5rem;
 }
 
-#menu{
-  width: 100%;
-  height: 100%;
-  justify-content: space-around;
-  font-size: 1.5rem;
+#menu #namefield{
+  width: 0%;
+  overflow: hidden;
+  transition: width 0.5s;
 }
+
+#menu #confirmpwdfield{
+  width: 0%;
+  overflow: hidden;
+  transition: width 0.5s;
+}
+
 
 #menu #socialLogins{
   height: 3rem;
@@ -102,5 +114,59 @@ style.innerText = `
 `;
 
 menu.append(style);
-
 document.getElementById("menuspace").append(menu);
+
+let registerToggle = false;
+function toggleLoginRegister(){
+  registerToggle = !registerToggle;
+
+  let loginbtn = document.getElementById("loginbtn");
+  let registerbtn = document.getElementById("registerbtn");
+
+  let loginClip1 = loginbtn.getBoundingClientRect();
+  let registerClip1 = registerbtn.getBoundingClientRect();
+
+  if(registerToggle){
+    document.getElementById("namefield").style.width = "90%";
+    document.getElementById("confirmpwdfield").style.width = "90%";
+
+    loginbtn.style.order = "1";
+    registerbtn.style.order = "-1";
+
+    loginbtn.setAttribute("onclick", "toggleLoginRegister()");
+    registerbtn.setAttribute("onclick", "submit()");
+  } else {
+    document.getElementById("namefield").style.width = "0%";
+    document.getElementById("confirmpwdfield").style.width = "0%";
+
+    loginbtn.style.order = "-1";
+    registerbtn.style.order = "1";
+
+    loginbtn.setAttribute("onclick", "submit()");
+    registerbtn.setAttribute("onclick", "toggleLoginRegister()");
+  }
+
+  let loginClip2 = loginbtn.getBoundingClientRect();
+  let registerClip2 = registerbtn.getBoundingClientRect();
+
+  const loginDelta = loginClip1.top - loginClip2.top;
+  const registerDelta = registerClip1.top - registerClip2.top;
+
+  loginbtn.animate([
+    { transform: 'translateY(' + loginDelta + 'px)' },
+    { transform: 'translateY(0px)' }
+  ], {
+    duration: 500,
+    iterations: 1,
+    fill: "forwards"
+  });
+
+  registerbtn.animate([
+    { transform: 'translateY(' + registerDelta + 'px)' },
+    { transform: 'translateY(0px)' }
+  ], {
+    duration: 500,
+    iterations: 1,
+    fill: "forwards"
+  });
+}

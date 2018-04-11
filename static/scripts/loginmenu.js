@@ -5,7 +5,7 @@ menu.classList.add("vbox");
 menu.id = "menu";
 
 menu.innerHTML = `
-<p>This is some text</p>
+<p>Sign up now to start creating and sharing your own polls.</p>
 
 <div class="vbox">
   <label>Name</label>
@@ -27,32 +27,41 @@ menu.innerHTML = `
   <input></input>
 </div>
 
-<button>Log in</button>
+<a href="#">Log in</a>
 <p>- or -</p>
-<button>Register</button>
+<a href="#">Register</a>
 
 <div id="socialLogins" class="hbox">
-  <button class="socialButton"><i class="fab fa-twitter"></i></button>
-  <button class="socialButton"><i class="fab fa-facebook-f"></i></button>
-  <button class="socialButton"><i class="fab fa-google"></i></button>
+  <a href="#" class="socialButton"><i class="fab fa-twitter"></i></a>
+  <a href="#" class="socialButton"><i class="fab fa-facebook-f"></i></a>
+  <a href="#" class="socialButton"><i class="fab fa-google"></i></a>
 </div>
+
+<a href="#", class="smallLink">Terms of Service</a>
+<a href="#", class="smallLink">Privacy Notice</a>
 `;
 
 let style = document.createElement("style");
 style.innerText = `
-#menu button{
+#menu{
+  color: #c751f4;
+  text-align: center;
+}
+
+#menu a{
   background: transparent;
-  border: none;
   width: 80%;
   height: 3rem;
-  cursor: pointer;
   border-radius: 5px;
   font-size: 2rem;
   color: #c751f4;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#menu button:hover{
+#menu a:hover{
   background: #66da89;
   color: black;
 }
@@ -80,8 +89,16 @@ style.innerText = `
 
 #menu #socialLogins{
   height: 3rem;
+  width: 60%;
   justify-content: space-around;
 }
+
+#menu #socialLogins a{
+  font-size: 1.2rem;
+}
+
+#menu .smallLink{
+  font-size: 1rem;
 `;
 
 menu.append(style);

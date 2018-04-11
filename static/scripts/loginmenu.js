@@ -7,27 +7,29 @@ menu.id = "menu";
 menu.innerHTML = `
 <p>Sign up now to start creating and sharing your own polls.</p>
 
-<div class="vbox", id="namefield">
-  <label>Name</label>
-  <input></input>
+<div class="vbox", id="inputs">
+  <div class="vbox", id="namefield">
+    <label>Name</label>
+    <input placeholder="Joe" type="text"></input>
+  </div>
+
+  <div class="vbox">
+    <label>Email</label>
+    <input placeholder="joesoap@gmail.com" type="email"></input>
+  </div>
+
+  <div class="vbox">
+    <label>Password</label>
+    <input placeholder="*****" type="password"></input>
+  </div>
+
+  <div class="vbox", id="confirmpwdfield">
+    <label>Confirm Password</label>
+    <input placeholder="*****" type="password"></input>
+  </div>
 </div>
 
-<div class="vbox">
-  <label>Email</label>
-  <input></input>
-</div>
-
-<div class="vbox">
-  <label>Password</label>
-  <input></input>
-</div>
-
-<div class="vbox", id="confirmpwdfield">
-  <label>Confirm Password</label>
-  <input></input>
-</div>
-
-<div class="vbox">
+<div class="vbox", id="buttons">
   <button onclick="submit()", id="loginbtn">Log in</button>
   <p>- or -</p>
   <button onclick="toggleLoginRegister()", id="registerbtn">Register</button>
@@ -39,8 +41,10 @@ menu.innerHTML = `
   <a href="#" class="socialButton"><i class="fab fa-google"></i></a>
 </div>
 
-<a href="#", class="smallLink">Terms of Service</a>
-<a href="#", class="smallLink">Privacy Notice</a>
+<div class="vbox", id="legal">
+  <a href="#tos", class="smallLink">Terms of Service</a>
+  <a href="#pn", class="smallLink">Privacy Notice</a>
+</div>
 `;
 
 let style = document.createElement("style");
@@ -54,6 +58,39 @@ style.innerText = `
   font-size: 1.5rem;
 }
 
+#menu p{
+  font-size: 2rem;
+}
+
+#menu #inputs{
+  align-items: center;
+}
+
+#menu #inputs div{
+  margin: 0.5rem 0;
+}
+
+#menu #buttons{
+  align-items: center;
+}
+
+#menu button{
+  background: transparent;
+  border: none;
+  width: 80%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem 0;
+  margin: 1.5rem 0;
+  border-radius: 5px;
+  color: #c751f4;
+  transition: background 0.4s;
+}
+
+#menu button:hover{
+  background: #66da89;
+}
+
 #menu a{
   background: transparent;
   width: 80%;
@@ -65,6 +102,7 @@ style.innerText = `
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.4s;
 }
 
 #menu a:hover{
@@ -84,6 +122,7 @@ style.innerText = `
   border-color: #c751f4;
   border-radius: 5px;
   font-size: 1.5rem;
+  text-align: center;
 }
 
 #menu #namefield{
@@ -111,6 +150,11 @@ style.innerText = `
 
 #menu .smallLink{
   font-size: 1rem;
+}
+
+#menu #legal{
+  align-items: center;
+}
 `;
 
 menu.append(style);

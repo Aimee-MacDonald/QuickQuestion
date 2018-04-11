@@ -1,3 +1,61 @@
+
+let polldata = {
+  "title": "What is your Favourite City?",
+  "stats": {
+    "creation": {
+      "author": "Aimee",
+      "date": "11-April-2018"
+    },
+    "hearts": 8,
+    "comments": 2
+  },
+  "answers": [{
+    "answer": "Tokyo",
+    "image": "#",
+    "votes": 6
+  },{
+    "answer": "London",
+    "image": "#",
+    "votes": 7
+  },{
+    "answer": "New York",
+    "image": "#",
+    "votes": 10
+  }]
+}
+
+// Set Title
+let headerspace = document.getElementById("headerspace");
+headerspace.innerText = "";
+let header = document.createElement("p");
+header.innerText = polldata.title;
+headerspace.append(header);
+
+// Set Author
+let author = document.getElementById("author");
+author.innerText = "";
+let authorname = document.createElement("p");
+authorname.innerText = polldata.stats.creation.author;
+let date = document.createElement("p");
+date.innerText = polldata.stats.creation.date;
+author.append(authorname);
+author.append(date);
+
+// Set Hearts
+let hearts = document.getElementById("hearts");
+hearts.innerText = "";
+let numHearts = document.createElement("p");
+numHearts.innerText = polldata.stats.hearts;
+hearts.append(numHearts);
+
+// Set Comments
+let comments = document.getElementById("comments");
+comments.innerText = "";
+let numComments = document.createElement("p");
+numComments.innerText = polldata.stats.comments;
+comments.append(numComments);
+
+// Load Menu
 let sc = document.createElement("script");
 sc.src = ("scripts/loginmenu.js");
 document.getElementById("menuspace").append(sc);

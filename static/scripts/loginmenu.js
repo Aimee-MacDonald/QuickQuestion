@@ -30,7 +30,7 @@ menu.innerHTML = `
 </div>
 
 <div class="vbox", id="buttons">
-  <button onclick="submit()", id="loginbtn">Log in</button>
+  <button onclick="submitForm()", id="loginbtn">Log in</button>
   <p>- or -</p>
   <button onclick="toggleLoginRegister()", id="registerbtn">Register</button>
 </div>
@@ -178,7 +178,7 @@ function toggleLoginRegister(){
     registerbtn.style.order = "-1";
 
     loginbtn.setAttribute("onclick", "toggleLoginRegister()");
-    registerbtn.setAttribute("onclick", "submit()");
+    registerbtn.setAttribute("onclick", "submitForm()");
   } else {
     document.getElementById("namefield").style.width = "0%";
     document.getElementById("confirmpwdfield").style.width = "0%";
@@ -186,7 +186,7 @@ function toggleLoginRegister(){
     loginbtn.style.order = "-1";
     registerbtn.style.order = "1";
 
-    loginbtn.setAttribute("onclick", "submit()");
+    loginbtn.setAttribute("onclick", "submitForm()");
     registerbtn.setAttribute("onclick", "toggleLoginRegister()");
   }
 
@@ -213,4 +213,12 @@ function toggleLoginRegister(){
     iterations: 1,
     fill: "forwards"
   });
+}
+
+function submitForm(){
+  if(registerToggle){
+    console.log("Submit Registration");
+  } else {
+    console.log("Submit Login");
+  }
 }

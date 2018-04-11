@@ -52,6 +52,15 @@ p
 #contentspace
   width: 100%
   height: 100%
+  button
+    background: purple
+    margin: 1.5rem 0rem
+    padding: 1rem 3rem
+    border-radius: 5px
+    border: none
+    font-size: 1.5rem
+    font-weight: bold
+    color: #c751f4
 
 #menuspace
   width: 0%
@@ -67,10 +76,27 @@ p
   border-radius: 50%
   animation: spin 2s cubic-bezier(1, -1.6, 0.58, 1.19) infinite
 
+#answers
+  flex-wrap: wrap
+  overflow-y: scroll
+
 .answer
-  width: 15rem
-  height: 15rem
   overflow: hidden
+  border: 5px solid purple
+  border-radius: 20px
+  margin: 1rem
+  img
+    width: 18rem
+    height: 18rem
+  p
+    background: purple
+    width: 100%
+    height: 3rem
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 1.5rem
+    font-weight: bold
 
 @keyframes spin
   0%

@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../dbmodels/user");
 
 router.post("/register", function(req, res, next){
-  User.find({email: req.body.em}, (err, docs) => {
+  User.find({email: req.body.email}, (err, docs) => {
     if(err) throw err;
 
     if(docs.length > 0){
@@ -13,14 +13,14 @@ router.post("/register", function(req, res, next){
       res.redirect("/");
     } else {
       var user = new User({
-        email: req.body.em,
-        password: req.body.pw
+        email: req.body.email,
+        password: req.body.password
       });
 
       user.save(err => {
         if(err) throw err;
 
-        User.find({email: req.body.em}, (err, docs) => {
+        User.find({email: req.body.email}, (err, docs) => {
           if(err) throw err;
 
           if(docs.length > 0)

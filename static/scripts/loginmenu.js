@@ -10,22 +10,22 @@ menu.innerHTML = `
 <div class="vbox", id="inputs">
   <div class="vbox", id="namefield">
     <label>Name</label>
-    <input placeholder="Joe" type="text"></input>
+    <input placeholder="Joe" type="text" id="name"></input>
   </div>
 
   <div class="vbox">
     <label>Email</label>
-    <input placeholder="joesoap@gmail.com" type="email"></input>
+    <input placeholder="joesoap@gmail.com" type="email" id="email"></input>
   </div>
 
   <div class="vbox">
     <label>Password</label>
-    <input placeholder="*****" type="password"></input>
+    <input placeholder="*****" type="password" id="password"></input>
   </div>
 
   <div class="vbox", id="confirmpwdfield">
     <label>Confirm Password</label>
-    <input placeholder="*****" type="password"></input>
+    <input placeholder="*****" type="password" id="confirmPassword"></input>
   </div>
 </div>
 
@@ -217,7 +217,25 @@ function toggleLoginRegister(){
 
 function submitForm(){
   if(registerToggle){
-    console.log("Submit Registration");
+    let request = new XMLHttpRequest();
+    request.onerror = () => {console.log("Error Response")};
+    request.open("post", "/auth/register", true);
+    //request.withCredentials = true;
+    request.setRequestHeader('CSRF-Token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+    request.setRequestHeader('Content-Type', "Application/json");
+    request.onload = () => {
+      console.log("On Load?");
+      if(request.readyState === 4 && request.status === 200){
+        console.log("Response!");
+      };
+    };
+
+    request.send(JSON.stringify({
+      "name": document.getElementById("name").value,
+      "email": document.getElementById("email").value,
+      "password": document.getElementById("password").value,
+      "confirmPassword": document.getElementById("confirmPassword").value
+    }));
   } else {
     console.log("Submit Login");
   }

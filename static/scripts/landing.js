@@ -56,28 +56,34 @@ numComments.innerText = polldata.stats.comments;
 comments.append(numComments);
 
 // Load Menu
-let sc = document.createElement("script");
-sc.src = ("scripts/loginmenu.js");
-document.getElementById("menuspace").append(sc);
+if(document.getElementById("authflag").innerText === "true"){
+  let sc = document.createElement("script");
+  sc.src = ("scripts/magicmenu.js");
+  document.getElementById("menuspace").append(sc);
+} else {
+  let sc = document.createElement("script");
+  sc.src = ("scripts/loginmenu.js");
+  document.getElementById("menuspace").append(sc);
 
-window.addEventListener("hashchange", () => {
-  let contentspace = document.getElementById("contentspace");
-  switch (location.hash) {
-    case "#tos":
-      contentspace.innerText = "";
-      let tos = document.createElement("p");
-      tos.innerText = "Terms Of Service";
-      contentspace.append(tos);
-      break;
+  window.addEventListener("hashchange", () => {
+    let contentspace = document.getElementById("contentspace");
+    switch (location.hash) {
+      case "#tos":
+        contentspace.innerText = "";
+        let tos = document.createElement("p");
+        tos.innerText = "Terms Of Service";
+        contentspace.append(tos);
+        break;
 
-    case "#pn":
-      contentspace.innerText = "";
-      let pn = document.createElement("p");
-      pn.innerText = "Privacy Notice";
-      contentspace.append(pn);
-      break;
-    }
-});
+      case "#pn":
+        contentspace.innerText = "";
+        let pn = document.createElement("p");
+        pn.innerText = "Privacy Notice";
+        contentspace.append(pn);
+        break;
+      }
+  });
+}
 
 /*
 let landingPoll = document.getElementById("landing-poll").innerText;

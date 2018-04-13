@@ -232,10 +232,10 @@ function submitForm(){
             let menuspace = document.getElementById("menuspace");
             let spinner = document.createElement("div");
             spinner.classList.add("spinner");
-            let magicmenu = document.createElement("script");
-            magicmenu.src = "scripts/magicmenu.js";
             menuspace.innerText = "";
             menuspace.append(spinner);
+            let magicmenu = document.createElement("script");
+            magicmenu.src = "scripts/magicmenu.js";
             menuspace.append(magicmenu);
             break;
 
@@ -268,10 +268,10 @@ function submitForm(){
             let menuspace = document.getElementById("menuspace");
             let spinner = document.createElement("div");
             spinner.classList.add("spinner");
-            let magicmenu = document.createElement("script");
-            magicmenu.src = "scripts/magicmenu.js";
             menuspace.innerText = "";
             menuspace.append(spinner);
+            let magicmenu = document.createElement("script");
+            magicmenu.src = "scripts/magicmenu.js";
             menuspace.append(magicmenu);
             break;
 

@@ -38,6 +38,8 @@ app.use("/auth", auth);
 app.use("/api", api);
 
 app.get("/", (req, res) => {
+  res.render("landing", {csrfToken: req.csrfToken()});
+  /*
   if(req.query.pollid){
     Poll.find({pollid: req.query.pollid}, (err, docs) => {
       if(err) throw err;
@@ -69,6 +71,7 @@ app.get("/", (req, res) => {
       res.render("landing", {csrfToken: req.csrfToken()});
     }
   }
+  */
 });
 
 app.listen(process.env.PORT, () => console.log("Listening on Port: " + process.env.PORT));

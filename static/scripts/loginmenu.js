@@ -224,9 +224,16 @@ function submitForm(){
     request.setRequestHeader('CSRF-Token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
     request.setRequestHeader('Content-Type', "Application/json");
     request.onload = () => {
-      console.log("On Load?");
-      if(request.readyState === 4 && request.status === 200){
-        console.log("Response!");
+      if(request.readyState === 4){
+        switch(request.status){
+          case 200:
+            console.log("User Registered");
+            break;
+
+          case 422:
+            console.log("User Already Exists");
+            break;
+        }
       };
     };
 
@@ -237,6 +244,33 @@ function submitForm(){
       "confirmPassword": document.getElementById("confirmPassword").value
     }));
   } else {
-    console.log("Submit Login");
+    let request = new XMLHttpRequest();
+    request.onerror = () => {console.log("Error Response")};
+    request.open("post", "/auth/login", true);
+    //request.withCredentials = true;
+    request.setRequestHeader('CSRF-Token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+    request.setRequestHeader('Content-Type', "Application/json");
+    request.onload = () => {
+      if(request.readyState === 4){
+        switch(request.status){
+          case 200:
+            console.log("User Logged in");
+            break;
+
+          case 401:
+            console.log("Wrong Credentials");
+            break;
+
+          case 404:
+            console.log("No Such User");
+            break;
+        }
+      };
+    };
+
+    request.send(JSON.stringify({
+      "email": document.getElementById("email").value,
+      "password": document.getElementById("password").value
+    }));
   }
 }

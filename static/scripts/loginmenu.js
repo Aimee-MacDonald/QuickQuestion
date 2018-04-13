@@ -227,7 +227,16 @@ function submitForm(){
       if(request.readyState === 4){
         switch(request.status){
           case 200:
-            console.log("User Registered");
+            //document.getElementById("menuspace").style.width = "0%";
+            //document.getElementById("container").style.width = "100%";
+            let menuspace = document.getElementById("menuspace");
+            let spinner = document.createElement("div");
+            spinner.classList.add("spinner");
+            let magicmenu = document.createElement("script");
+            magicmenu.src = "scripts/magicmenu.js";
+            menuspace.innerText = "";
+            menuspace.append(spinner);
+            menuspace.append(magicmenu);
             break;
 
           case 422:
@@ -254,7 +263,16 @@ function submitForm(){
       if(request.readyState === 4){
         switch(request.status){
           case 200:
-            console.log("User Logged in");
+            //document.getElementById("menuspace").style.width = "0%";
+            //document.getElementById("container").style.width = "100%";
+            let menuspace = document.getElementById("menuspace");
+            let spinner = document.createElement("div");
+            spinner.classList.add("spinner");
+            let magicmenu = document.createElement("script");
+            magicmenu.src = "scripts/magicmenu.js";
+            menuspace.innerText = "";
+            menuspace.append(spinner);
+            menuspace.append(magicmenu);
             break;
 
           case 401:

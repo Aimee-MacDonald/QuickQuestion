@@ -9,6 +9,7 @@ html(lang="en")
     title Quick Question
     body
       p(id="authflag", hidden) #{authflag}
+      p(id="pollid", hidden) #{pollid}
       div(class="hbox", id="mainframe")
         div(class="vbox", id="container")
           div(class="hbox", id="headerspace")
@@ -28,15 +29,7 @@ html(lang="en")
           div(class="hbar")
           div(class="vbox", id="contentspace")
             div(class="hbox", id="answers")
-              div(class="vbox answer")
-                img(src="https://cdn.londonandpartners.com/assets/73295-640x360-london-skyline-ns.jpg")
-                p London
-              div(class="vbox answer")
-                img(src="https://imagesvc.timeincapp.com/v3/mm/image?url=http%3A%2F%2Fcdn-image.travelandleisure.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1600x1000%2Fpublic%2F1488208675%2Ftokyo-japan-FDEALS0217.jpg%3Fitok%3DVpaGmPRS&w=800&q=85")
-                p Tokyo
-              div(class="vbox answer")
-                img(src="https://media.timeout.com/images/103444978/750/422/image.jpg")
-                p London
+              div(class="spinner")
             button Vote
         div(class="vbox", id="menuspace")
           div(class="spinner")

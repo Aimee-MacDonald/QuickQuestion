@@ -227,8 +227,6 @@ function submitForm(){
       if(request.readyState === 4){
         switch(request.status){
           case 200:
-            //document.getElementById("menuspace").style.width = "0%";
-            //document.getElementById("container").style.width = "100%";
             let menuspace = document.getElementById("menuspace");
             let spinner = document.createElement("div");
             spinner.classList.add("spinner");
@@ -263,8 +261,6 @@ function submitForm(){
       if(request.readyState === 4){
         switch(request.status){
           case 200:
-            //document.getElementById("menuspace").style.width = "0%";
-            //document.getElementById("container").style.width = "100%";
             let menuspace = document.getElementById("menuspace");
             let spinner = document.createElement("div");
             spinner.classList.add("spinner");

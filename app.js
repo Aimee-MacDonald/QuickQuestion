@@ -38,7 +38,17 @@ app.use("/auth", auth);
 app.use("/api", api);
 
 app.get("/", (req, res) => {
-  res.render("landing", {csrfToken: req.csrfToken(), authflag: req.isAuthenticated()});
+  let clientPackage = {
+    csrfToken: req.csrfToken(),
+    authflag: req.isAuthenticated(),
+    pollid: 0
+  }
+
+  if(req.query.pollid){
+    clientPackage.pollid = req.query.pollid;
+  }
+
+  res.render("landing", clientPackage);
   /*
   if(req.query.pollid){
     Poll.find({pollid: req.query.pollid}, (err, docs) => {

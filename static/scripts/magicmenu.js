@@ -5,6 +5,7 @@ magicmenu.classList.add("vbox");
 magicmenu.id = "magicmenu";
 
 magicmenu.innerHTML = `
+<a href="#profile">My Profile</a>
 <a href="auth/logout">Log Out</a>
 `;
 

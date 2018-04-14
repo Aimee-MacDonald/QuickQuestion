@@ -44,11 +44,12 @@ window.onload = function(){
       case "#tos":
         let tos = document.getElementById("tos");
         if(tos){
-          console.log(tos);
+          tos.style.height = "100%";
         } else {
           console.log("notos");
           let newtos = document.createElement("div");
           newtos.id = "tos";
+          newtos.classList.add("vbox");
           newtos.innerText = "Terms of Service";
           contentspace.append(newtos);
         }
@@ -57,11 +58,12 @@ window.onload = function(){
       case "#pn":
         let pn = document.getElementById("pn");
         if(pn){
-          console.log(pn);
+          pn.style.height = "100%";
         } else {
           console.log("nopn");
           let newpn = document.createElement("div");
           newpn.id = "pn";
+          newpn.classList.add("vbox");
           newpn.innerText = "Privacy Notice";
           contentspace.append(newpn);
         }

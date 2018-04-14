@@ -33,6 +33,45 @@ window.onload = function(){
   }
 
   setPoll(polldata);
+
+  window.addEventListener("hashchange", () => {
+    let contentspace = document.getElementById("contentspace");
+    contentspace.childNodes.forEach(n => {
+      n.style.height = "0%";
+    });
+
+    switch(location.hash){
+      case "#tos":
+        let tos = document.getElementById("tos");
+        if(tos){
+          console.log(tos);
+        } else {
+          console.log("notos");
+          let newtos = document.createElement("div");
+          newtos.id = "tos";
+          newtos.innerText = "Terms of Service";
+          contentspace.append(newtos);
+        }
+        break;
+
+      case "#pn":
+        let pn = document.getElementById("pn");
+        if(pn){
+          console.log(pn);
+        } else {
+          console.log("nopn");
+          let newpn = document.createElement("div");
+          newpn.id = "pn";
+          newpn.innerText = "Privacy Notice";
+          contentspace.append(newpn);
+        }
+        break;
+
+      case "profile":
+        console.log("profile");
+        break;
+    }
+  });
 }
 
 function setPoll(polldata){
@@ -96,25 +135,6 @@ if(document.getElementById("authflag").innerText === "true"){
   let sc = document.createElement("script");
   sc.src = ("scripts/loginmenu.js");
   document.getElementById("menuspace").append(sc);
-
-  window.addEventListener("hashchange", () => {
-    let contentspace = document.getElementById("contentspace");
-    switch (location.hash) {
-      case "#tos":
-        contentspace.innerText = "";
-        let tos = document.createElement("p");
-        tos.innerText = "Terms Of Service";
-        contentspace.append(tos);
-        break;
-
-      case "#pn":
-        contentspace.innerText = "";
-        let pn = document.createElement("p");
-        pn.innerText = "Privacy Notice";
-        contentspace.append(pn);
-        break;
-      }
-  });
 }
 
 /*

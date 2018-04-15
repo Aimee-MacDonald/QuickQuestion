@@ -235,6 +235,8 @@ function submitForm(){
             let magicmenu = document.createElement("script");
             magicmenu.src = "scripts/magicmenu.js";
             menuspace.append(magicmenu);
+            authflag = "true";
+            document.getElementById("authflag").innerText = "true";
             break;
 
           case 422:
@@ -269,6 +271,9 @@ function submitForm(){
             let magicmenu = document.createElement("script");
             magicmenu.src = "scripts/magicmenu.js";
             menuspace.append(magicmenu);
+            console.log(authflag);
+            authflag = "true";
+            document.getElementById("authflag").innerText = "true";
             break;
 
           case 401:

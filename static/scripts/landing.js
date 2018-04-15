@@ -54,8 +54,12 @@ window.onload = function(){
         setPn();
         break;
 
-      case "profile":
-        console.log("profile");
+      case "#profile":
+        if(authflag === "true"){
+          setProfile();
+        } else {
+          setPollAnswers();
+        }
         break;
 
       default:
@@ -91,7 +95,6 @@ function setPn(){
 
 function setPollAnswers(){
   let answers = document.getElementById("answers");
-
   if(answers){
     answers.style.height = "100%";
     document.getElementById("headertext").innerText = polldata.title;
@@ -99,6 +102,18 @@ function setPollAnswers(){
     let a = document.createElement("script");
     a.src = "scripts/answers.js";
     contentspace.append(a);
+  }
+}
+
+function setProfile(){
+  let profile = document.getElementById("profile");
+  if(profile){
+    profile.style.height = "100%";
+    document.getElementById("headertext").innerText = "Profile";
+  } else {
+    let p = document.createElement("script");
+    p.src = "scripts/profile.js";
+    contentspace.append(p);
   }
 }
 

@@ -38,8 +38,9 @@ window.onload = function(){
     console.log("Get poll number " + pollid);
   }
 
-  setPoll(polldata);
+  setPollAnswers(polldata);
 
+/*
   window.addEventListener("hashchange", () => {
     contentspace.childNodes.forEach(n => {
       n.style.height = "0%";
@@ -51,7 +52,6 @@ window.onload = function(){
         if(tos){
           tos.style.height = "100%";
         } else {
-          console.log("notos");
           let newtos = document.createElement("div");
           newtos.id = "tos";
           newtos.classList.add("vbox");
@@ -65,7 +65,6 @@ window.onload = function(){
         if(pn){
           pn.style.height = "100%";
         } else {
-          console.log("nopn");
           let newpn = document.createElement("div");
           newpn.id = "pn";
           newpn.classList.add("vbox");
@@ -79,56 +78,20 @@ window.onload = function(){
         break;
     }
   });
+  */
 }
 
-function setPoll(polldata){
-  document.getElementById("answers").innerText = "";
-  // Set Title
-  headerspace.innerText = "";
-  let header = document.createElement("p");
-  header.innerText = polldata.title;
-  headerspace.append(header);
+function setPollAnswers(polldata){
+  let answers = document.getElementById("answers");
 
-  // Set Author
-  let author = document.getElementById("author");
-  author.innerText = "";
-  let authorname = document.createElement("p");
-  authorname.innerText = polldata.stats.creation.author;
-  let date = document.createElement("p");
-  date.innerText = polldata.stats.creation.date;
-  author.append(authorname);
-  author.append(date);
-
-  // Set Hearts
-  let hearts = document.getElementById("hearts");
-  hearts.innerText = "";
-  let numHearts = document.createElement("p");
-  numHearts.innerText = polldata.stats.hearts;
-  hearts.append(numHearts);
-
-  // Set Comments
-  let comments = document.getElementById("comments");
-  comments.innerText = "";
-  let numComments = document.createElement("p");
-  numComments.innerText = polldata.stats.comments;
-  comments.append(numComments);
-
-  // Set Answers
-  polldata.answers.forEach(a => {
-    let answer = document.createElement("div");
-    answer.classList.add("vbox");
-    answer.classList.add("answer");
-
-    let answerImage = document.createElement("img");
-    answerImage.src = a.image;
-    answer.append(answerImage);
-
-    let answerText = document.createElement("p");
-    answerText.innerText = a.answer;
-    answer.append(answerText);
-
-    document.getElementById("answers").append(answer);
-  });
+  if(answers){
+    console.log("Answers");
+  } else {
+    console.log("No Answers");
+    let a = document.createElement("script");
+    a.src = "scripts/answers.js";
+    contentspace.append(a);
+  }
 }
 
 function loadMenu(){

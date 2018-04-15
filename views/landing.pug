@@ -10,11 +10,13 @@ html(lang="en")
     body
       p(id="authflag", hidden) #{authflag}
       p(id="pollid", hidden) #{pollid}
+      
       div(class="hbox", id="mainframe")
         div(class="vbox", id="container")
           div(class="hbox", id="headerspace")
-            div(class="spinner")
-          div(class="hbox", id="statspace")
+            p(id="headertext") Quick Question:
+            button Menu
+          //div(class="hbox", id="statspace")
             div(class="vbox", id="author")
               div(class="spinner")
             div(class="vbar")
@@ -28,8 +30,6 @@ html(lang="en")
               p Share
           div(class="hbar")
           div(class="vbox", id="contentspace")
-            div(class="hbox", id="answers")
-              div(class="spinner")
         div(class="vbox", id="menuspace")
           div(class="spinner")
       

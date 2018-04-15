@@ -38,9 +38,8 @@ window.onload = function(){
     console.log("Get poll number " + pollid);
   }
 
-  setPollAnswers(polldata);
+  setPollAnswers();
 
-/*
   window.addEventListener("hashchange", () => {
     contentspace.childNodes.forEach(n => {
       n.style.height = "0%";
@@ -48,46 +47,52 @@ window.onload = function(){
 
     switch(location.hash){
       case "#tos":
-        let tos = document.getElementById("tos");
-        if(tos){
-          tos.style.height = "100%";
-        } else {
-          let newtos = document.createElement("div");
-          newtos.id = "tos";
-          newtos.classList.add("vbox");
-          newtos.innerText = "Terms of Service";
-          contentspace.append(newtos);
-        }
+        setTos();
         break;
 
       case "#pn":
-        let pn = document.getElementById("pn");
-        if(pn){
-          pn.style.height = "100%";
-        } else {
-          let newpn = document.createElement("div");
-          newpn.id = "pn";
-          newpn.classList.add("vbox");
-          newpn.innerText = "Privacy Notice";
-          contentspace.append(newpn);
-        }
+        setPn();
         break;
 
       case "profile":
         console.log("profile");
         break;
+
+      default:
+        setPollAnswers();
+        break;
     }
   });
-  */
 }
 
-function setPollAnswers(polldata){
+function setTos(){
+  let tos = document.getElementById("tos");
+  if(tos){
+    tos.style.height = "100%";
+  } else {
+    let t = document.createElement("script");
+    t.src = "scripts/termsofservice.js";
+    contentspace.append(t);
+  }
+}
+
+function setPn(){
+  let pn = document.getElementById("pn");
+  if(pn){
+    pn.style.height = "100%";
+  } else {
+    let p = document.createElement("script");
+    p.src = "scripts/privacynotice.js";
+    contentspace.append(p);
+  }
+}
+
+function setPollAnswers(){
   let answers = document.getElementById("answers");
 
   if(answers){
-    console.log("Answers");
+    answers.style.height = "100%";
   } else {
-    console.log("No Answers");
     let a = document.createElement("script");
     a.src = "scripts/answers.js";
     contentspace.append(a);

@@ -1,5 +1,5 @@
 let privacyNotice = document.createElement("div");
-privacyNotice.id = "privacynotice";
+privacyNotice.id = "pn";
 
 document.getElementById("headertext").innerText = "Privacy Notice";
 
@@ -9,8 +9,12 @@ privacyNotice.innerHTML = `
 
 let pnStyle = document.createElement("style");
 pnStyle.innerText = `
-#privacynotice{
-  background: red;
+#pn{
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  transition: height 0.5s;
 }
 `;
 

@@ -1,5 +1,5 @@
 let termsOfService = document.createElement("div");
-termsOfService.id = "termsofservice";
+termsOfService.id = "tos";
 
 document.getElementById("headertext").innerText = "Terms Of Service";
 
@@ -9,8 +9,13 @@ termsOfService.innerHTML = `
 
 let tosStyle = document.createElement("style");
 tosStyle.innerText = `
-#termsofservice{
-  background: red;
+
+#tos{
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  transition: height 0.5s;
 }
 `;
 

@@ -69,6 +69,7 @@ function setTos(){
   let tos = document.getElementById("tos");
   if(tos){
     tos.style.height = "100%";
+    document.getElementById("headertext").innerText = "Terms Of Service";
   } else {
     let t = document.createElement("script");
     t.src = "scripts/termsofservice.js";
@@ -78,6 +79,7 @@ function setTos(){
 
 function setPn(){
   let pn = document.getElementById("pn");
+  document.getElementById("headertext").innerText = "Privacy Notice";
   if(pn){
     pn.style.height = "100%";
   } else {
@@ -92,6 +94,7 @@ function setPollAnswers(){
 
   if(answers){
     answers.style.height = "100%";
+    document.getElementById("headertext").innerText = polldata.title;
   } else {
     let a = document.createElement("script");
     a.src = "scripts/answers.js";

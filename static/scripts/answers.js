@@ -7,7 +7,7 @@ document.getElementById("headertext").innerText = polldata.title;
 polldata.answers.forEach(a => {
   let answer = document.createElement("div");
   answer.classList.add("vbox");
-  answer.classList.add("answer");
+  answer.classList.add("card");
 
   let answerImage = document.createElement("img");
   answerImage.src = a.image;
@@ -29,7 +29,13 @@ answersStyle.innerText = `
   height: 100%;
   transition: height 0.5s;
 }
+`;
 
+answers.append(answersStyle);
+document.getElementById("contentspace").append(answers);
+
+
+/*
 #answers .answer{
   overflow: hidden;
   border: 5px solid purple;
@@ -51,10 +57,11 @@ answersStyle.innerText = `
   align-items: center;
   font-size: 1.5rem;
   font-weight: bold;
-`;
+*/
 
-answers.append(answersStyle);
-document.getElementById("contentspace").append(answers);
+
+
+
 
 /*
 function setPoll(polldata){

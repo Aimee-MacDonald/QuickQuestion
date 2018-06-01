@@ -36,7 +36,7 @@ menu.innerHTML = `
 </div>
 
 <div id="socialLogins" class="hbox">
-  <a href="#" class="socialButton"><i class="fab fa-twitter"></i></a>
+  <a href="/auth/login/twitter" class="socialButton"><i class="fab fa-twitter"></i></a>
   <a href="#" class="socialButton"><i class="fab fa-facebook-f"></i></a>
   <a href="#" class="socialButton"><i class="fab fa-google"></i></a>
 </div>

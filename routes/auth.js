@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 const User = require("../dbmodels/user");
 
@@ -57,5 +58,13 @@ router.get("/logout", (req, res, next) => {
   req.logout();
   res.redirect("/");
 });
+
+router.get("/login/twitter", passport.authenticate("twitter"));
+
+router.get('/login/twitter/return',
+  passport.authenticate('twitter', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 module.exports = router;

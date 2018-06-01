@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session");
 const csurf = require("csurf");
+const TwitterStrategy = require("passport-twitter").Strategy;
 
 const User = require(__dirname + "/dbmodels/user");
 const Poll = require(__dirname + "/dbmodels/poll")
@@ -85,6 +86,16 @@ app.get("/", (req, res) => {
 });
 
 app.listen(process.env.PORT, () => console.log("Listening on Port: " + process.env.PORT));
+
+passport.use(new TwitterStrategy({
+  consumerKey: process.env.TWITTERCONSUMERKEY,
+  consumerSecret: process.env.TWITTERCONSUMERSECRET,
+  callbackURL: "https://quickquestion.glitch.me/auth/login/twitter/return"
+}, (token, tokenSecret, profile, callback) => {
+  User.findOrCreate({twitterId: profile.id}, (err, user) => {
+    return callback(err, user);
+  });
+}));
 
 passport.serializeUser(function(uid, done){
   done(null, uid);
